@@ -1,5 +1,6 @@
 package com.dailycodework.dreamshops.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class OrderItem {
     private Long id;
     private int quantity;
     private BigDecimal price;
+
 
     @ManyToOne
     @JoinColumn(name = "order_id")
