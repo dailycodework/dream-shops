@@ -29,6 +29,9 @@
 	<properties>
 		<java.version>17</java.version>
 		<modelmapper-spring.version>2.4.4</modelmapper-spring.version>
+		<jjwt-api.version>0.11.5</jjwt-api.version>
+		<jjwt-impl.version>0.11.5</jjwt-impl.version>
+		<jjwt-jackson.version>0.11.5</jjwt-jackson.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +48,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.modelmapper.extensions</groupId>
 			<artifactId>modelmapper-spring</artifactId>
 			<version>${modelmapper-spring.version}</version>
@@ -55,6 +63,41 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt-api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt-impl.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt-jackson.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
