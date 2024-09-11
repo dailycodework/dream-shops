@@ -22,6 +22,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("${api.prefix}/images")
@@ -30,10 +31,12 @@ public class ImageController {
 
 
     @PostMapping("/upload")
-    public ResponseEntity<ApiResponse> saveImages(@RequestParam List<MultipartFile> files, @RequestParam Long productId) {
+    public ResponseEntity<ApiResponse> saveImages(
+                                                  @RequestParam("files") List<MultipartFile> files,
+                                                  @RequestParam("productId") Long productId) {
         try {
             List<ImageDto> imageDtos = imageService.saveImages(productId, files);
-            return ResponseEntity.ok(new ApiResponse("Upload success!", imageDtos));
+            return ResponseEntity.ok(new ApiResponse("Images Uploaded successfully!", imageDtos));
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("Upload failed!", e.getMessage()));
         }

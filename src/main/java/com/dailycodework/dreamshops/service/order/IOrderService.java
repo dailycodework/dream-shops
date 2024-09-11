@@ -2,6 +2,7 @@ package com.dailycodework.dreamshops.service.order;
 
 import com.dailycodework.dreamshops.dto.OrderDto;
 import com.dailycodework.dreamshops.model.Order;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

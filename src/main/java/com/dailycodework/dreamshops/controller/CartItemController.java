@@ -34,7 +34,7 @@ public class CartItemController {
                User user = userService.getAuthenticatedUser();
               Cart cart= cartService.initializeNewCart(user);
             cartItemService.addItemToCart(cart.getId(), productId, quantity);
-            return ResponseEntity.ok(new ApiResponse("Add Item Success", null));
+            return ResponseEntity.ok(new ApiResponse("Item added to cart successfully", null));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }catch (JwtException e){

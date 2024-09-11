@@ -31,7 +31,7 @@ public class ProductController {
         return  ResponseEntity.ok(new ApiResponse("success", convertedProducts));
     }
 
-    @GetMapping("product/{productId}/product")
+    @GetMapping("/product/{productId}/product")
     public ResponseEntity<ApiResponse> getProductById(@PathVariable Long productId) {
         try {
             Product product = productService.getProductById(productId);
@@ -133,7 +133,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/{category}/all/products")
-    public ResponseEntity<ApiResponse> findProductByCategory(@PathVariable String category) {
+    public ResponseEntity<ApiResponse> findProductsByCategory(@PathVariable String category) {
         try {
             List<Product> products = productService.getProductsByCategory(category);
             if (products.isEmpty()) {
@@ -145,6 +145,33 @@ public class ProductController {
             return ResponseEntity.ok(new ApiResponse(e.getMessage(), null));
         }
     }
+
+    // New end point 1
+    @GetMapping("/distinct/products")
+    public ResponseEntity<ApiResponse> getDistinctProductsByCategory() {
+        try {
+            List<Product> products = productService.findDistinctProductsByName();
+            if (products.isEmpty()) {
+                return ResponseEntity.status(NOT_FOUND).body(new ApiResponse("No products found ", null));
+            }
+            List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
+            return  ResponseEntity.ok(new ApiResponse("success", convertedProducts));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new ApiResponse(e.getMessage(), null));
+        }
+    }
+
+    // New end point 2
+    @GetMapping("/distinct/brands")
+    public ResponseEntity<ApiResponse> getAllDistinctBrands() {
+        try {
+            List<String> brands = productService.getAllDistinctBrands();
+            return  ResponseEntity.ok(new ApiResponse("success", brands));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new ApiResponse(e.getMessage(), null));
+        }
+    }
+
 
     @GetMapping("/product/count/by-brand/and-name")
     public ResponseEntity<ApiResponse> countProductsByBrandAndName(@RequestParam String brand, @RequestParam String name) {

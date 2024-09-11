@@ -36,7 +36,7 @@ public class AuthController {
             String jwt = jwtUtils.generateTokenForUser(authentication);
             ShopUserDetails userDetails = (ShopUserDetails) authentication.getPrincipal();
             JwtResponse jwtResponse = new JwtResponse(userDetails.getId(), jwt);
-            return ResponseEntity.ok(new ApiResponse("Login Successful", jwtResponse));
+            return ResponseEntity.ok(new ApiResponse("Login Success!", jwtResponse));
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiResponse(e.getMessage(), null));
         }

@@ -1,5 +1,6 @@
 package com.dailycodework.dreamshops.service.cart;
 
+import com.dailycodework.dreamshops.dto.CartDto;
 import com.dailycodework.dreamshops.model.Cart;
 import com.dailycodework.dreamshops.model.User;
 
@@ -13,4 +14,6 @@ public interface ICartService {
     Cart initializeNewCart(User user);
 
     Cart getCartByUserId(Long userId);
+
+    CartDto convertToDto(Cart cart);
 }
